@@ -1,5 +1,6 @@
 package com.dialog.composedialog.progress
 
+import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.dialog.composedialog.R
@@ -29,8 +31,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun ProgressBarIndicator(
     isCircular: Boolean = false,
-    @DrawableRes progressBarColor: Int = R.color.black,
-    @DrawableRes progressBarBackgroundColor: Int = R.color.grey,
+    progressBarColor: Color = colorResource(id = R.color.black),
+    progressBarBackgroundColor: Color = colorResource(id = R.color.grey),
     onDoneClick: () -> Unit,
 ) {
     var currentProgress by remember { mutableStateOf(0f) }
@@ -62,8 +64,8 @@ fun ProgressBarIndicator(
                     modifier = Modifier
                         .size(40.dp)
                         .clip(RoundedCornerShape(16.dp)),
-                    color = colorResource(id = progressBarColor),
-                    trackColor = colorResource(id = progressBarBackgroundColor)
+                    color = progressBarColor,
+                    trackColor = progressBarBackgroundColor
                 )
             } else
                 LinearProgressIndicator(
@@ -72,8 +74,8 @@ fun ProgressBarIndicator(
                         .fillMaxWidth()
                         .height(8.dp)
                         .clip(RoundedCornerShape(16.dp)),
-                    color = colorResource(id = progressBarColor),
-                    trackColor = colorResource(id = progressBarBackgroundColor)
+                    color = progressBarColor,
+                    trackColor = progressBarBackgroundColor
                 )
         }
     }
@@ -81,8 +83,8 @@ fun ProgressBarIndicator(
 
 @Composable
 fun RegularProgressBar(
-    @DrawableRes progressBarColor: Int = R.color.black,
-    @DrawableRes progressBarBackgroundColor: Int = R.color.grey,
+    progressBarColor: Color = colorResource(id = R.color.black),
+    progressBarBackgroundColor: Color = colorResource(id = R.color.grey),
 ) {
 
     val loading by remember { mutableStateOf(true) }
@@ -99,8 +101,8 @@ fun RegularProgressBar(
                 modifier = Modifier
                     .size(40.dp)
                     .clip(RoundedCornerShape(16.dp)),
-                color = colorResource(id = progressBarColor),
-                trackColor = colorResource(id = progressBarBackgroundColor)
+                color = progressBarColor,
+                trackColor = progressBarBackgroundColor
             )
     }
 

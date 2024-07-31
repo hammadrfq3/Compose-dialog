@@ -1,6 +1,5 @@
 package com.dialog.composedialog.progress
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -25,10 +25,10 @@ import com.dialog.composedialog.R
 fun ProgressDialog(
     showDialog: Boolean = true,
     title: String,
-    @DrawableRes dialogBackgroundColor: Int = R.color.white,
-    @DrawableRes titleTextColor: Int = R.color.black,
-    @DrawableRes progressBarColor: Int = R.color.black,
-    @DrawableRes progressBarBackgroundColor: Int = R.color.grey,
+    dialogBackgroundColor: Color = colorResource(id = R.color.white),
+    titleTextColor: Color = colorResource(id = R.color.black),
+    progressBarColor: Color = colorResource(id = R.color.black),
+    progressBarBackgroundColor: Color = colorResource(id = R.color.grey),
     isCancelable: Boolean = true,
     isCircular: Boolean = false,
     isProgressEnabled: Boolean = true,
@@ -40,6 +40,7 @@ fun ProgressDialog(
         Dialog(
             properties = DialogProperties(
                 dismissOnClickOutside = isCancelable,
+                dismissOnBackPress = isCancelable
             ),
             onDismissRequest = {
                 onDismiss.invoke()
@@ -53,7 +54,7 @@ fun ProgressDialog(
             ) {
                 Column(
                     modifier = Modifier
-                        .background(color = colorResource(id = dialogBackgroundColor), RoundedCornerShape(20.dp))
+                        .background(color = dialogBackgroundColor, RoundedCornerShape(20.dp))
                         .padding(top = 20.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -66,7 +67,7 @@ fun ProgressDialog(
                                 .fillMaxWidth()
                                 .padding(start = 10.dp, end = 10.dp),
                             text = title,
-                            color = colorResource(id = titleTextColor),
+                            color = titleTextColor,
                             fontWeight = FontWeight.Bold,
                             fontSize = 18.sp,
                             textAlign = TextAlign.Center

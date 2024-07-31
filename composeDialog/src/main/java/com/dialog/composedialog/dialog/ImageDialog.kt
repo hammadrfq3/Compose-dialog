@@ -1,8 +1,13 @@
 package com.dialog.composedialog.dialog
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.dialog.composedialog.R
 import com.dialog.mydialog.ui.theme.MyDialogTheme
 
@@ -11,13 +16,14 @@ fun ImageDialog(
     title: String,
     positiveButtonText: String = "Ok",
     negativeButtonText: String = "Cancel",
-    @DrawableRes dialogBackgroundColor: Int = R.color.white,
-    @DrawableRes negativeButtonBackgroundColor: Int = R.color.white,
-    @DrawableRes positiveButtonBackgroundColor: Int = R.color.dialog_black_btn,
-    @DrawableRes positiveButtonTextColor: Int = R.color.white,
-    @DrawableRes negativeButtonTextColor: Int = R.color.text_dark,
-    @DrawableRes titleTextColor: Int = R.color.black,
-    @DrawableRes descriptionTextColor: Int = R.color.light_grey,
+    buttonShape: Shape = RoundedCornerShape(15.dp),
+    dialogBackgroundColor: Color = colorResource(id = R.color.white),
+    negativeButtonBackgroundColor: Color = colorResource(id = R.color.white),
+    positiveButtonBackgroundColor: Color = colorResource(id = R.color.dialog_black_btn),
+    positiveButtonTextColor: Color = colorResource(id = R.color.white),
+    negativeButtonTextColor: Color = colorResource(id = R.color.text_dark),
+    titleTextColor: Color = colorResource(id = R.color.black),
+    descriptionTextColor: Color = colorResource(id = R.color.light_grey),
     @DrawableRes image: Int,
     isCancelable: Boolean = true,
     description: String,
@@ -32,6 +38,7 @@ fun ImageDialog(
         positiveButtonText = positiveButtonText,
         isCancelable = isCancelable,
         description = description,
+        buttonShape = buttonShape,
         positiveButtonTextColor = positiveButtonTextColor,
         negativeButtonTextColor = negativeButtonTextColor,
         dialogBackgroundColor = dialogBackgroundColor,

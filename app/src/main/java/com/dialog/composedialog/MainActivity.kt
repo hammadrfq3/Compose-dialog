@@ -1,6 +1,7 @@
 package com.dialog.composedialog
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -10,9 +11,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -78,7 +81,7 @@ fun RegularCircularProgressDialogButton() {
             title = "Wait a moment",
             isCircular = true,
             isProgressEnabled = false,
-            progressBarColor = R.color.orange,
+            progressBarColor = colorResource(id = R.color.orange),
             onDismiss = {
                 showDialog = false
             }) {
@@ -117,6 +120,7 @@ fun CircularProgressDialogButton() {
         ProgressDialog(
             title = "Fetching data...",
             isCircular = true,
+            isCancelable = false,
             onDismiss = {
                 showDialog = false
             }) {
@@ -154,7 +158,8 @@ fun ProgressDialogButton() {
     if (showDialog)
         ProgressDialog(
             title = "Fetching data...",
-            progressBarColor = R.color.purple_700,
+            progressBarColor = colorResource(id = R.color.purple_700),
+            isCancelable = false,
             onDismiss = {
                 showDialog = false
             }) {
@@ -192,6 +197,7 @@ fun SimpleDialogButton() {
     if (showImageDialog)
         SimpleDialog(
             title = "Simple Dialog",
+            buttonShape = CircleShape,
             description = "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
             textAlign = TextAlign.Start,
             onDismiss = {
@@ -267,6 +273,8 @@ fun ImageDialogButton() {
 fun EditableDialogButton() {
 
     var showDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+
 
     if (showDialog)
         EditableDialog(
@@ -277,6 +285,7 @@ fun EditableDialogButton() {
 
             }) {
             showDialog = false
+            Toast.makeText(context,it.toString(),Toast.LENGTH_SHORT).show()
         }
 
     Button(
@@ -311,6 +320,7 @@ fun AnimatedDialogButton() {
         AnimatedDialog(
             title = "Animated Dialog",
             lottieAnimatorRes = R.raw.failure,
+            positiveButtonBackgroundColor = Color.Red,
             description = "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made." ,
             onDismiss = {
                 showDialog = false
@@ -345,15 +355,18 @@ fun AnimatedDialogButton() {
 fun PickerDialogButton() {
 
     var showDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     if (showDialog)
         PickerDialog(
             title = "Picker Dialog",
+            buttonShape = CircleShape,
             description = "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made." ,
             onDismiss = {
                 showDialog = false
             }) {
             showDialog = false
+            Toast.makeText(context, it,Toast.LENGTH_SHORT).show()
         }
 
     Button(
