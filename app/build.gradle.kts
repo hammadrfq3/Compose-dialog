@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.dialog.composedialog"
+    namespace = "com.sample.composedialog"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.dialog.composedialog"
+        applicationId = "com.sample.composedialog"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
