@@ -69,8 +69,8 @@ configure<PublishingExtension> {
         groupId = "com.github.hammadrfq3"
         artifactId = "composeDialog"
         version = "1.0.6"
-     //   pom.packaging = "jar"
-     //   artifact("$buildDir/libs/MyPlugin.jar")
+        pom.packaging = "jar"
+        artifact("$buildDir/libs/composeDialog.jar")
 
     }
     repositories {
