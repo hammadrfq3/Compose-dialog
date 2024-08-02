@@ -78,4 +78,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(project(":composeDialog"))
+    //implementation("com.github.hammadrfq3:Compose-dialog:1.0.3")
+
 }

@@ -64,7 +64,7 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:4.0.0")
 }
 
-configure<PublishingExtension> {
+/*configure<PublishingExtension> {
     publications.create<MavenPublication>("compose-dialog") {
         groupId = "com.github.hammadrfq3"
         artifactId = "compose-dialog"
@@ -76,7 +76,7 @@ configure<PublishingExtension> {
     repositories {
         mavenLocal()
     }
-}
+}*/
 
 /*
 afterEvaluate {
