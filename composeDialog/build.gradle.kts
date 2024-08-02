@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    `maven-publish`
 }
 
 android {
@@ -62,3 +63,32 @@ dependencies {
 
     implementation("com.airbnb.android:lottie-compose:4.0.0")
 }
+
+configure<PublishingExtension> {
+    publications.create<MavenPublication>("compose-dialog") {
+        groupId = "com.github.hammadrfq3"
+        artifactId = "compose-dialog"
+        version = "1.0.0"
+     //   pom.packaging = "jar"
+     //   artifact("$buildDir/libs/MyPlugin.jar")
+
+    }
+    repositories {
+        mavenLocal()
+    }
+}
+
+/*
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                        groupId = 'com.github.philipplackner'
+                artifactId = 'image-preview-compose'
+                version = '1.0'
+            }
+        }
+    }
+}*/
