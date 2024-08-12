@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    `maven-publish`
+    id("maven-publish")
 }
 
 android {
@@ -64,17 +64,27 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:4.0.0")
 }
 
-configure<PublishingExtension> {
-    publications.create<MavenPublication>("composeDialog") {
+/*configure<PublishingExtension> {
+    publications.create<MavenPublication>("Compose-dialog") {
         groupId = "com.github.hammadrfq3"
-        artifactId = "composeDialog"
+        artifactId = "Compose-dialog"
         version = "1.0.6"
-        pom.packaging = "jar"
-        artifact("$buildDir/libs/composeDialog.jar")
+        *//*pom.packaging = "jar"
+        artifact("$buildDir/libs/composeDialog.jar")*//*
 
     }
     repositories {
         mavenLocal()
+    }
+}*/
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
     }
 }
 
