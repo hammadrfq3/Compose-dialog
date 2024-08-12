@@ -83,6 +83,10 @@ publishing {
         register<MavenPublication>("release") {
             afterEvaluate {
                 from(components["release"])
+
+                groupId = "com.github.hammadrfq3"
+                artifactId = "Compose-dialog"
+                version = "1.0.9"
             }
         }
     }
