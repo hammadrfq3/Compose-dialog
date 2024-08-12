@@ -86,7 +86,7 @@ publishing {
 
                 groupId = "com.github.hammadrfq3"
                 artifactId = "Compose-dialog"
-                version = "1.0.9"
+                version = "1.0"
             }
         }
     }
